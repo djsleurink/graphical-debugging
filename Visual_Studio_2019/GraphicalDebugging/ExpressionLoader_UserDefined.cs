@@ -305,6 +305,7 @@ namespace GraphicalDebugging
                                    string parentName, string parentType, int parentSizeOf,
                                    ClassScopeExpression memberExpr)
             {
+                IsValidOffset = true;
                 IsValid = false;
 
                 expr = memberExpr;
@@ -322,7 +323,9 @@ namespace GraphicalDebugging
                 offset = ExpressionParser.GetAddressDifference(debugger, parentName, name);
                 // offset + size > sizeOf
                 if (ExpressionParser.IsInvalidOffset(parentSizeOf, offset))
-                    return;
+                {
+                    IsValidOffset = false;
+                }
 
                 IsValid = true;
             }
@@ -378,6 +381,7 @@ namespace GraphicalDebugging
                 return new MemoryReader.Member<double>(converter, (int)offset);
             }
 
+            public bool IsValidOffset;
             public bool IsValid;
 
             ClassScopeExpression expr;
