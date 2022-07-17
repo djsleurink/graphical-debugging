@@ -12,6 +12,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 
 namespace GraphicalDebugging
@@ -540,6 +541,28 @@ namespace GraphicalDebugging
                 }                
             }
 
+            /// <summary>
+            /// places loaders with loadercreators that contain typematchers before interfacematchers
+            /// This is needed so you can have user defined type matchers and interface matchers
+            /// Type matchers will be used if found, otherwise, if the type has an interface an interface matcher can still be used
+            /// </summary>
+            public void SortInterfaceMatchersLast()
+            {
+                foreach (var item in _loaderCreators)
+                {
+                    var typeMatching = item.Value.Where(loader => !loader.IsInterfaceMatcher()).ToList();
+                    var interfaceMatching = item.Value.Where(loader => loader.IsInterfaceMatcher()).ToList();
+                    item.Value.Clear();
+                    if (typeMatching?.Any() == true)
+                    {
+                        item.Value.AddRange(typeMatching);
+                    }
+                    if (interfaceMatching?.Any() == true)
+                    {
+                        item.Value.AddRange(interfaceMatching);
+                    }
+                }
+            }
         }
 
         /// <summary>

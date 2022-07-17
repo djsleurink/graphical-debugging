@@ -2186,6 +2186,7 @@ namespace GraphicalDebugging
                     }
                 }
             }
+            loaders.SortInterfaceMatchersLast();
 
             return update;
         }
