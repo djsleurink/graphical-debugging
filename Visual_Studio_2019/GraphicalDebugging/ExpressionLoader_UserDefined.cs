@@ -378,7 +378,8 @@ namespace GraphicalDebugging
                 MemoryReader.ValueConverter<double> converter = mreader.GetNumericConverter(type, sizeOf);
                 if (converter == null)
                     return null;
-                return new MemoryReader.Member<double>(converter, (int)offset);
+                //TODO DJSL: Try to get the address of the backing field of a auto-property to prevent the offset from becoming invalid in case of auto-properties
+                return IsValidOffset ? new MemoryReader.Member<double>(converter, (int)offset) : null;
             }
 
             public bool IsValidOffset;
