@@ -435,20 +435,19 @@ namespace GraphicalDebugging
         /// </summary>
         class Loaders
         {
+            Dictionary<Kind, List<LoaderCreator>> _loaderCreators = new Dictionary<Kind, List<LoaderCreator>>();
+
             static int KindsCount = Enum.GetValues(typeof(Kind)).Length;
 
             public Loaders()
             {
-                lists = new List<LoaderCreator>[KindsCount];
                 for (int i = 0; i < KindsCount; ++i)
-                    lists[i] = new List<LoaderCreator>();
+                    _loaderCreators.Add((Kind)i, new List<LoaderCreator>());
             }
 
             public void Add(LoaderCreator loaderCreator)
             {
-                int i = (int)loaderCreator.Kind();
-                System.Diagnostics.Debug.Assert(0 <= i && i < KindsCount);
-                lists[i].Add(loaderCreator);
+                _loaderCreators[loaderCreator.Kind()].Add(loaderCreator);
             }
 
             /// <summary>
@@ -494,8 +493,7 @@ namespace GraphicalDebugging
                 {
                     // Single kind required, check only one list
                     Kind kind = (kindConstraint as KindConstraint).Kind;
-                    int kindIndex = (int)kind;
-                    foreach (LoaderCreator creator in lists[kindIndex])
+                    foreach (LoaderCreator creator in _loaderCreators[kind])
                     {
                         Loader loader = creator.Create(this, Debugger, name, type, id);
                         if (loader != null)
@@ -509,30 +507,31 @@ namespace GraphicalDebugging
                 else
                 {
                     // Multiple kinds may be required, check all of the lists
-                    for (int i = 0; i < lists.Length; ++i)
+                    foreach (var creators in _loaderCreators)
                     {
-                        Kind kind = (Kind)i;
-                        if (kindConstraint.Check(kind))
+                        if (kindConstraint.Check(creators.Key))
                         {
-                            foreach (LoaderCreator creator in lists[i])
+                            foreach (LoaderCreator creator in creators.Value)
                             {
+                                if (creator == null) continue;
                                 Loader loader = creator.Create(this, Debugger, name, type, id);
                                 if (loader != null)
                                 {
                                     if (loadersCache != null)
-                                        loadersCache.Add(type, kind, loader);
+                                        loadersCache.Add(type, creators.Key, loader);
                                     return loader;
                                 }
                             }
                         }
                     }
+                        
                 }
                 return null;
             }
 
             public void RemoveUserDefined()
             {
-                foreach (List<LoaderCreator> li in lists)
+                foreach (List<LoaderCreator> li in _loaderCreators.Values)
                 {
                     List<LoaderCreator> removeList = new List<LoaderCreator>();
                     for (int i = li.Count - 1; i >= 0; --i)
@@ -541,7 +540,6 @@ namespace GraphicalDebugging
                 }                
             }
 
-            List<LoaderCreator>[] lists;
         }
 
         /// <summary>
