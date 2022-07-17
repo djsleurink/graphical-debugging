@@ -1366,7 +1366,20 @@ namespace GraphicalDebugging
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
                     if (!typeMatcher.MatchType(type, id))
-                        return null;
+                    {
+                        if (typeMatcher is IdMatcher matcher && matcher.IsInterface)
+                        {
+                            if (!matcher.MatchTypeDerived(debugger, name))
+                            {
+                                return null;
+                            }
+                        }
+                        else
+                        {
+                            return null;
+
+                        }
+                    }
 
                     UserContainerLoaders<PointLoader> containerLoaders
                         = containerEntry.Create<PointLoader>(
