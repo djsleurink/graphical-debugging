@@ -1869,9 +1869,17 @@ namespace GraphicalDebugging
                             else
                             {
                                 string id = elEntry.GetAttribute("Id");
-                                if (! Util.Empty(id))
+                                if (!Util.Empty(id))
                                 {
-                                    typeMatcher = new IdMatcher(id);
+                                    string isInterface = elEntry.GetAttribute("IsInterface");
+                                    if (bool.TryParse(isInterface, out var result) && result)
+                                    {
+                                        typeMatcher = new IdMatcher(id, result);
+                                    }
+                                    else
+                                    {
+                                        typeMatcher = new IdMatcher(id, false);
+                                    }
                                 }
                             }
                         }

@@ -164,6 +164,11 @@ namespace GraphicalDebugging
         {
             bool MatchType(string type, string id);
         }
+        interface IInterfaceTypeMatcher : ITypeMatcher
+        {
+            bool MatchTypeDerived(Debugger debugger, string valueObjectName);
+            bool HasInterfaceType();
+        }
 
         class DummyMatcher : ITypeMatcher
         {
@@ -173,16 +178,40 @@ namespace GraphicalDebugging
             }
         }
 
-        class IdMatcher : ITypeMatcher
+        class IdMatcher : IInterfaceTypeMatcher
         {
-            public IdMatcher(string id) { this.id = id; }
+            public IdMatcher(string id, bool isInterface) { this.id = id; this.IsInterface = isInterface; }
 
             public bool MatchType(string type, string id)
             {
                 return id == this.id;
             }
+            public bool HasInterfaceType()
+            {
+                return IsInterface;
+            }
+
+            /// <summary>
+            /// Checks if the object being loaded is derived of user defined type.
+            /// Checking for interfaces happends after checking for normal types (the list of loaders gets sorted so normal types get checked first)
+            /// </summary>
+            /// <param name="debugger"></param>
+            /// <param name="valueObjectName">The name of the geometry object</param>
+            /// <returns></returns>
+            public bool MatchTypeDerived(Debugger debugger, string valueObjectName)
+            {
+                var typeMatchResult = debugger.GetExpression($"{valueObjectName} is {id}");
+                if (typeMatchResult.IsValidValue)
+                {
+                    var value = typeMatchResult.Value;
+                    if (value == "true") 
+                        return true;
+                }
+                return false;
+            }
 
             string id;
+            public bool IsInterface;
         }
 
         class TypeMatcher : ITypeMatcher
