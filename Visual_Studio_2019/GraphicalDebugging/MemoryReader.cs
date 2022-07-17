@@ -5,8 +5,8 @@
 //------------------------------------------------------------------------------
 
 using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.Debugger;
-using Microsoft.VisualStudio.Debugger.CallStack;
 
 using System;
 using System.Collections.Generic;
