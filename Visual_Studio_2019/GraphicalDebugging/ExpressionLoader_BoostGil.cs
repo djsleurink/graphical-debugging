@@ -24,6 +24,7 @@ namespace GraphicalDebugging
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
                 public bool IsUserDefined() { return false; }
+                public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Image; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {

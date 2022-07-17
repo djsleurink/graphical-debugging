@@ -153,7 +153,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -241,7 +241,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -299,7 +299,7 @@ namespace GraphicalDebugging
         {
             public new class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -460,7 +460,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -511,7 +511,7 @@ namespace GraphicalDebugging
         {
             public new class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -546,7 +546,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -604,7 +604,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -741,7 +741,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -816,7 +816,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -983,7 +983,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -1132,7 +1132,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -1329,7 +1329,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -1380,7 +1380,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -1439,7 +1439,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -1552,7 +1552,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -1634,7 +1634,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
@@ -1692,7 +1692,7 @@ namespace GraphicalDebugging
         {
             public class LoaderCreator : ExpressionLoader.LoaderCreator
             {
-                public bool IsUserDefined() { return false; }
+                public bool IsUserDefined() { return false; } public bool IsInterfaceMatcher() { return false; }
                 public Kind Kind() { return ExpressionLoader.Kind.Container; }
                 public Loader Create(Loaders loaders, Debugger debugger, string name, string type, string id)
                 {
